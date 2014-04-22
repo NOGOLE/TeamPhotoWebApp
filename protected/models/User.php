@@ -11,6 +11,9 @@
  */
 class User extends CActiveRecord
 {
+
+	private $initialPassword;
+	private $repeatPassword;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -27,9 +30,12 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, phone, pin', 'required'),
+			array('name, phone, pin, repeat_pin', 'required', 'on' =>'register'),
 			array('phone, pin', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
+			//Want PIN to be between 4 and 10 digits long`
+			array('pin, repeate_pin', 'length', 'min'=>4, 'max'=>10),
+			array('pin', 'compare', 'compareAttribute' => 'repeat_pin'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, phone, pin', 'safe', 'on'=>'search'),
@@ -56,7 +62,8 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Name',
 			'phone' => 'Phone',
-			'pin' => 'Pin',
+			'pin' => 'PIN',
+			'repeat_pin' => 'Repeat PIN',
 		);
 	}
 
