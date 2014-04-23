@@ -12,8 +12,8 @@
 class User extends CActiveRecord
 {
 
-	private $initialPassword;
-	private $repeatPassword;
+	public $initial_pin;
+	public $repeat_pin;
 	/**
 	 * @return string the associated database table name
 	 */

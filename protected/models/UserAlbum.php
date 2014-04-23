@@ -29,7 +29,7 @@ class UserAlbum extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, name, description, create_time, directory_path', 'required'),
+			array('name, description, create_time, directory_path', 'required'),
 			array('user_id, create_time', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
 			array('description', 'length', 'max'=>5000),
@@ -45,9 +45,13 @@ class UserAlbum extends CActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+		/*An album belongs to one user and has many photos
+
 		return array(
+			'user' => array(self::BELONGS_TO,
+			'User', 'user_id'),
+			'photos' => array(self::HAS_MANY,
+			'Photo', 'album_id'),
 		);
 	}
 
@@ -105,5 +109,26 @@ class UserAlbum extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	/**
+	* Returns true if directory is created, false otherwise
+	* @param User $model, model that needs directory created
+	* @return Boolean to determine success.
+	*/
+	public function createDirectory($model)
+	{
+		$sucess = false; //initialize variable
+		$name = $model->name;
+		
+
+	}
+	public beforeSave() {
+	if(parent::beforeSave() {
+	
+	$this->user_id = Yii::app()->user->getId();
+	createDirectory($this);
+	
+	}
 	}
 }
