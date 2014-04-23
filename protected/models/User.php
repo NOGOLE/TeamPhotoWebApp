@@ -38,7 +38,7 @@ class User extends CActiveRecord
 			array('pin', 'compare', 'compareAttribute' => 'repeat_pin'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, phone, pin', 'safe', 'on'=>'search'),
+			array('id, name, phone', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,9 +47,11 @@ class User extends CActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
+	/*User has many albumns, and many shared albumns*/
 		return array(
+		'albums' =>array(self::HAS_MANY, 'UserAlbum','user_id'),
+		'sharedAlbums' =>array(self::HAS_MANY, 'SharedAlbum','user_id'),
+
 		);
 	}
 
@@ -88,7 +90,6 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('phone',$this->phone);
-		$criteria->compare('pin',$this->pin);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
