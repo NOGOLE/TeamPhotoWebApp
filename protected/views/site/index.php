@@ -5,16 +5,20 @@ $this->pageTitle=Yii::app()->name;
 ?>
 
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
+<p>
+The second app brought to you by <a href = "http://www.nogole.com">NOGOLE LLC.</a> Team Photo allows users to: 
 <ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
+<li>back up photos for later use via albums</li>
+<li>invite others to view your albums via their telephone number</li>
+<li>add photos to albums that you are shared with</li>
 </ul>
+</p>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<p>
+Currently this app is being developed, feel free to watch our development on <a href = "https://www.github.com/mastashake08/TeamPhotoWebapp">GitHub</a>. Alternatively, if you want to be notified when the app is ready to go into the beta stage phase, please navigate <?php
+echo CHtml::link("Here", array('site/contact')); ?>.
+</p>
+
+<p>
+In the meantime, please follow us on <?php echo CHtml::link("Twitter", "https://www.twitter.com/nogoleky"); ?>, and like us on <?php echo CHtml::link("Facebook", "https://www.facebook.com/nogole"); ?>!
+</p>
