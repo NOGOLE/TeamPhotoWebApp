@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update UserAlbum <?php echo $model->id; ?></h1>
+<h1>Update Album <?php echo $model->name; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

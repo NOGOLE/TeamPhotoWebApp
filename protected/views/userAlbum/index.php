@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create UserAlbum', 'url'=>array('create')),
-	array('label'=>'Manage UserAlbum', 'url'=>array('admin')),
+	array('label'=>'Create New Album', 'url'=>array('create')),
+	array('label'=>'Manage Albums', 'url'=>array('admin')),
 );
 ?>
 

@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'phone'); ?>
-		<?php echo $form->numberField($model,'phone'); ?>
+		<?php echo $form->textField($model,'phone'); ?>
 		<?php echo $form->error($model,'phone'); ?>
 	</div>
 

@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create UserAlbum</h1>
+<h1>Create New Album</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

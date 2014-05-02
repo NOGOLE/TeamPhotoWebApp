@@ -19,11 +19,6 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -33,21 +28,11 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>5000)); ?>
+		<?php echo $form->textArea($model,'description',array('width'=>60,'height'=>60,'maxlength'=>5000)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'create_time'); ?>
-		<?php echo $form->textField($model,'create_time'); ?>
-		<?php echo $form->error($model,'create_time'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'directory_path'); ?>
-		<?php echo $form->textField($model,'directory_path',array('size'=>60,'maxlength'=>2000)); ?>
-		<?php echo $form->error($model,'directory_path'); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

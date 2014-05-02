@@ -22,7 +22,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
-	<?php echo CHtml::encode($data->create_time); ?>
+	<?php echo CHtml::encode(Yii::app()->dateFormatter->formatDateTime($data->create_time,'short','short')); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('directory_path')); ?>:</b>

@@ -37,7 +37,7 @@ class UserAlbumController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -110,15 +110,16 @@ class UserAlbumController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		rmdir($this->loadModel($id)->directory_path);
 		$this->loadModel($id)->delete();
-
+		
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists all models that were created by user
 	 */
 	public function actionIndex()
 	{

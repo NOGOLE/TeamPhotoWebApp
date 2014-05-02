@@ -29,7 +29,7 @@ class UserAlbum extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, description, create_time, directory_path', 'required'),
+			array('name, description', 'required'),
 			array('user_id, create_time', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
 			array('description', 'length', 'max'=>5000),
@@ -45,7 +45,7 @@ class UserAlbum extends CActiveRecord
 	 */
 	public function relations()
 	{
-		/*An album belongs to one user and has many photos
+		/*An album belongs to one user and has many photos*/
 
 		return array(
 			'user' => array(self::BELONGS_TO,
@@ -120,15 +120,33 @@ class UserAlbum extends CActiveRecord
 	{
 		$sucess = false; //initialize variable
 		$name = $model->name;
-		
+	$basePath = Yii::getPathOfAlias('webroot');
+
+	mkdir($basePath.'/albums'.'/'.$name);
+	$model->directory_path = $basePath.'/albums/'.$name;
+//	var_dump($basePath.'/albums/'.$name);
+//	exit();	
 
 	}
-	public beforeSave() {
-	if(parent::beforeSave() {
+
+	protected function beforeSave()
+	{
 	
 	$this->user_id = Yii::app()->user->getId();
-	createDirectory($this);
+	$this->create_time = time();	
+	$this->createDirectory($this);
+	
+return parent::beforeSave();	
 	
 	}
-	}
+
+
+	protected function afterSave()
+{
+	if(parent::afterSave()) {
+	var_dump($this->id);
+	exit();
 }
+}
+
+	}
