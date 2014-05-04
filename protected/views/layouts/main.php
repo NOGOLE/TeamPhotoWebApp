@@ -31,8 +31,8 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'My Albums', 'url'=>array('/userAlbum/index','visible'=>!Yii::app()->user->isGuest)),
-				array('label'=>'Shared Albums', 'url'=>array('/sharedAlbum/index','visible'=>!Yii::app()->user->isGuest)),
+				array('label'=>'My Albums', 'url'=>array('/userAlbum/index'),'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Shared Albums', 'url'=>array('/sharedAlbum/index'),'visible'=>!Yii::app()->user->isGuest),
 				
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

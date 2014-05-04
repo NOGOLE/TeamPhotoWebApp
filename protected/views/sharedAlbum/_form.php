@@ -25,11 +25,6 @@
 		<?php echo $form->error($model,'user_id'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'album_id'); ?>
-		<?php echo $form->textField($model,'album_id'); ?>
-		<?php echo $form->error($model,'album_id'); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

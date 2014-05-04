@@ -60,7 +60,7 @@ class SharedAlbumController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new SharedAlbum;
 
@@ -70,7 +70,9 @@ class SharedAlbumController extends Controller
 		if(isset($_POST['SharedAlbum']))
 		{
 			$model->attributes=$_POST['SharedAlbum'];
-			if($model->save())
+	 $model->album_id = $id;			
+
+if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 

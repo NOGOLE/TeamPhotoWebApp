@@ -26,7 +26,7 @@ class SharedAlbum extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, album_id', 'required'),
+			array('user_id', 'required'),
 			array('user_id, album_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -52,7 +52,7 @@ class SharedAlbum extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
+			'user_id' => ' Phone Number',
 			'album_id' => 'Album',
 		);
 	}
