@@ -127,6 +127,7 @@ class Photo extends CActiveRecord
 	protected function beforeSave()
 	{
 		$this->user_id = Yii::app()->user->getId();
+		return true;
 		
 
 }}

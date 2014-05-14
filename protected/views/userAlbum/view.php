@@ -19,13 +19,15 @@ $this->menu=array(
 <h1>View <?php echo $model->user->name;?>'s Album <?php echo $model->name; ?> </h1>
 <?php $photos = $model->photos;
 $images_path = realpath(Yii::getPathOfAlias('webroot.images'));
-
+$this->beginWidget('Galleria');
 foreach($photos as $photo)
 
 {
-echo CHtml::image($images_path.'/'.$photo->uri,'heart');
+ $image = $photo->name;
+         echo CHtml::image(Yii::app()->baseUrl.'/images/'.$image,'',array('width'=>90,'height'=>90));
+ 
 }
-
 ?>
 <?php 
+$this->endWidget();
  ?>

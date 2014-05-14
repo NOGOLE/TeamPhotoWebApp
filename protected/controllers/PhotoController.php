@@ -37,7 +37,7 @@ class PhotoController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('8594024863'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -65,32 +65,27 @@ class PhotoController extends Controller
 	//var_dump($_SERVER['QUERY_STRING']);
 		$model=new Photo;
 		$model->album_id = $_SERVER['QUERY_STRING'];
-		//var_dump($model->album_id);
+		$model->user_id = Yii::app()->user->getId();
+			//var_dump($model->album_id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
-		$model->album_id = 4;
-$model->user_id = 1;
   $image=CUploadedFile::getInstance($model, "uri");
-//var_dump($image);
-//exit();
 $model->upload_time = time();
 $model->name = $model->album_id.$model->upload_time.'.jpg';
 $model->setImage($image);
  $images_path = realpath(Yii::getPathOfAlias('webroot.images'));
 $model->saveImage($images_path, $model->name);
-//var_dump($model);
-//exit();
-	//	var_dump(json_encode($model));
-	//	exit();
-if($model->save())
+if($model->save(false))
 			{
 	
 				$this->redirect(array('view','id'=>$model->id));
 		}
+else
+echo 'bust';
 }
 
 		$this->render('create',array(
