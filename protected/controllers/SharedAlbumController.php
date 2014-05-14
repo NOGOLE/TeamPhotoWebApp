@@ -70,8 +70,9 @@ class SharedAlbumController extends Controller
 		if(isset($_POST['SharedAlbum']))
 		{
 			$model->attributes=$_POST['SharedAlbum'];
-	 $model->album_id = $id;			
-
+	 $model->album_id = $id;
+	$user = User::model()->findByAttributes(array('phone'=>$model->user_id));
+$model->user_id = $user->id;
 if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -124,7 +125,10 @@ if($model->save())
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('SharedAlbum');
+		$dataProvider=new CActiveDataProvider('SharedAlbum',array(
+		'criteria'=>array(
+'condition'=>'user_id='.Yii::app()->user->getId())));
+		
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
