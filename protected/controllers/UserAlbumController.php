@@ -137,7 +137,12 @@ class UserAlbumController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('UserAlbum');
+		$dataProvider=new CActiveDataProvider('UserAlbum',array(
+                'criteria'=>array(
+'condition'=>'user_id='.Yii::app()->user->getId())));
+
+
+
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

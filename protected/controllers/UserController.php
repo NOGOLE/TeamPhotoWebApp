@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('create','index','view'),
+				'actions'=>array('create'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -36,8 +36,8 @@ class UserController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('admin','delete','index','view'),
+				'users'=>array('8594024863'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -120,7 +120,7 @@ class UserController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function )
 	{
 		$dataProvider=new CActiveDataProvider('User');
 		$this->render('index',array(
