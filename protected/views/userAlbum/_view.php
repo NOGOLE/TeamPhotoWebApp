@@ -29,4 +29,7 @@
         <br />
 
 
+  <?php echo CHtml::button('Add Photos',array('submit'=>'../photo/create/?'.$data->id)); ?>
+        <br />
+
 </div>

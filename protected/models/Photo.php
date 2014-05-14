@@ -13,6 +13,20 @@
  */
 class Photo extends CActiveRecord
 {
+
+	private $_image;
+
+	public function setImage($image)
+	{
+	$this->_image = $image;
+	}
+
+	public function saveImage($image_path,$photo_path)
+	{
+	$file = $image_path .'/'.$photo_path;
+	$this->_image->saveAs($file);
+	$this->uri =$file;
+	}
 	/**
 	 * @return string the associated database table name
 	 */
@@ -29,7 +43,7 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('album_id, user_id, name, upload_time, uri', 'required'),
+			array( 'uri', 'required'),
 			array('album_id, user_id, upload_time', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
 			array('uri', 'length', 'max'=>2000),
@@ -46,7 +60,11 @@ class Photo extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
+		
+		//photos belong to album and belong to user
 		return array(
+		'album'=>array(self::BELONGS_TO, 'UserAlbum', 'album_id'),	
+		'user'=>array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -61,7 +79,7 @@ class Photo extends CActiveRecord
 			'user_id' => 'User',
 			'name' => 'Name',
 			'upload_time' => 'Upload Time',
-			'uri' => 'Uri',
+			'uri' => 'Uploaded File',
 		);
 	}
 
@@ -105,4 +123,10 @@ class Photo extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-}
+
+	protected function beforeSave()
+	{
+		$this->user_id = Yii::app()->user->getId();
+		
+
+}}

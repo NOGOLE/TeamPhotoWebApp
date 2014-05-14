@@ -62,17 +62,36 @@ class PhotoController extends Controller
 	 */
 	public function actionCreate()
 	{
+	//var_dump($_SERVER['QUERY_STRING']);
 		$model=new Photo;
-
+		$model->album_id = $_SERVER['QUERY_STRING'];
+		//var_dump($model->album_id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
-			if($model->save())
+		$model->album_id = 4;
+$model->user_id = 1;
+  $image=CUploadedFile::getInstance($model, "uri");
+//var_dump($image);
+//exit();
+$model->upload_time = time();
+$model->name = $model->album_id.$model->upload_time.'.jpg';
+$model->setImage($image);
+ $images_path = realpath(Yii::getPathOfAlias('webroot.images'));
+$model->saveImage($images_path, $model->name);
+//var_dump($model);
+//exit();
+	//	var_dump(json_encode($model));
+	//	exit();
+if($model->save())
+			{
+	
 				$this->redirect(array('view','id'=>$model->id));
 		}
+}
 
 		$this->render('create',array(
 			'model'=>$model,

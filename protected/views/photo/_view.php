@@ -26,7 +26,10 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('uri')); ?>:</b>
-	<?php echo CHtml::encode($data->uri); ?>
+	<?php
+	$image = $data->name;//substr($data->uri, -15);
+	var_dump($image);
+	 echo CHtml::image(Yii::app()->baseUrl.'/images/'.$image,''); ?>
 	<br />
 
 

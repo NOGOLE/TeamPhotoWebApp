@@ -80,6 +80,20 @@ class UserAlbumController extends Controller
 	}
 
 	/**
+	* Add a photo to album
+	*/
+
+	public function actionAddPhoto($id)
+	{
+		$this->render('/photo/create', array(
+			'model'=>null,
+		));
+
+
+
+
+	}
+	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
