@@ -15,7 +15,7 @@ The second app brought to you by <a href = "http://www.nogole.com">NOGOLE LLC.</
 </p>
 
 <p>
-Currently this app is being developed, feel free to watch our development on <a href = "https://www.github.com/mastashake08/TeamPhotoWebapp">GitHub</a>. Alternatively, if you want to be notified when the app is ready to go into the beta stage phase, please navigate <?php
+Currently this app is being developed, feel free to watch our development on <a href = "https://www.github.com/NOGOLE/TeamPhotoWebapp">GitHub</a>. Alternatively, if you want to be notified when the app is ready to go into the beta stage phase, please navigate <?php
 echo CHtml::link("Here", array('site/contact')); ?>.
 </p>
 
