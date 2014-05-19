@@ -80,6 +80,7 @@ class Photo extends CActiveRecord
 			'name' => 'Name',
 			'upload_time' => 'Upload Time',
 			'uri' => 'Uploaded File',
+			'album'=>'Album'
 		);
 	}
 

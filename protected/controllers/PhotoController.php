@@ -136,7 +136,14 @@ echo 'bust';
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Photo');
+		$dataProvider=new CActiveDataProvider('Photo', array(
+		'criteria'=>array(
+		'condition'=>'user_id='.Yii::app()->user->getId(),
+)
+)
+
+
+);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
